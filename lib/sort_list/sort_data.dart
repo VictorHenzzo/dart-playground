@@ -1,16 +1,16 @@
-List<CustomObj> sortCustomObjList(final List<CustomObj> unsortedList) {
-  final List<CustomObj> sortedList = [];
+List<CustomObj> sortCustomObjList(final List<CustomObj> unsortedElements) {
+  final List<CustomObj> sortedElements = [];
   String? currentParentId;
 
-  while (unsortedList.isNotEmpty) {
-    final currentSortedElementIndex = _getElementIndexById(unsortedList, currentParentId);
-    currentParentId = unsortedList[currentSortedElementIndex].id;
+  while (unsortedElements.isNotEmpty) {
+    final currentHandledElementIndex = _getElementIndexById(unsortedElements, currentParentId);
+    currentParentId = unsortedElements[currentHandledElementIndex].id;
 
-    sortedList.add(unsortedList[currentSortedElementIndex]);
-    unsortedList.removeAt(currentSortedElementIndex);
+    sortedElements.add(unsortedElements[currentHandledElementIndex]);
+    unsortedElements.removeAt(currentHandledElementIndex);
   }
 
-  return sortedList;
+  return sortedElements;
 }
 
 int _getElementIndexById(
@@ -23,7 +23,7 @@ int _getElementIndexById(
     }
   }
 
-  throw 'id not found on given list';
+  throw Exception('id not found on given list');
 }
 
 class CustomObj {
